@@ -547,6 +547,11 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
 
     for (TTTAttributedLabelLink *link in links) {
         if (link.attributes) {
+            NSTextCheckingResult *result = link.result;
+            NSInteger resultRange = result.range.location + result.range.length;
+            if(resultRange > mutableAttributedString.string.length) {
+                continue;
+            }
             [mutableAttributedString addAttributes:link.attributes range:link.result.range];
         }
     }
