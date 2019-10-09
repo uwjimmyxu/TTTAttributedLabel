@@ -891,7 +891,7 @@ static inline CGSize CTFramesetterSuggestFrameSizeForAttributedStringWithConstra
                 CTLineDraw(truncatedLine, c);
 
                 NSRange linkRange;
-                if ([attributedTruncationString attribute:NSLinkAttributeName atIndex:0 effectiveRange:&linkRange]) {
+                if (lastLineRange.length >= 2 && [attributedTruncationString attribute:NSLinkAttributeName atIndex:0 effectiveRange:&linkRange]) {
                     NSRange tokenRange = [truncationString.string rangeOfString:attributedTruncationString.string];
                     NSRange tokenLinkRange ;
                     unichar newLineChar = [[truncationString string]characterAtIndex:(lastLineRange.length - 1)];
